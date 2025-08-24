@@ -6,24 +6,106 @@
     <link rel="stylesheet" href="./css/output.css" />
     <title>profile</title>
   </head>
-  <body>
-    <header
-      class="flex items-center bg-white shadow-md px-6 py-4 rounded-lg mb-6"
-    >
-      <button
-        class="ml-auto px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+      <div
+        class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center"
       >
-        logout
-      </button>
+        <h1 class="text-xl font-semibold text-gray-900">Dashboard</h1>
+        <button
+          id="logoutBtn"
+          class="text-sm cursor-pointer text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          Sign Out
+        </button>
+      </div>
     </header>
-    <div class="container max-w-md mx-auto bg-gray-50 p-8 rounded-lg shadow-lg">
-      <h2 class="text-2xl font-semibold mb-4">
-        welcome <span id="userName" class="text-blue-600 font-bold"></span>,
-      </h2>
-      <p class="mb-2 text-lg">
-        email: <span id="userEmail" class="text-gray-700 font-medium"></span>
-      </p>
-    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Welcome Section -->
+      <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
+        <div class="text-center">
+          <div
+            class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+              class="w-10 h-10 text-blue-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              ></path>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-2">Welcome back!</h2>
+          <p class="text-gray-600 mb-6">
+            We're glad to see you again. Here's your account information:
+          </p>
+        </div>
+      </div>
+
+      <!-- User Information Cards -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- Username Card -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3"
+            >
+              <svg
+                class="w-5 h-5 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Username</h3>
+          </div>
+          <p id="userName" class="text-2xl font-bold text-gray-900 mb-2"></p>
+          <p class="text-sm text-gray-600">Your unique identifier</p>
+        </div>
+
+        <!-- Email Card -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3"
+            >
+              <svg
+                class="w-5 h-5 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Email Address</h3>
+          </div>
+          <p id="userEmail" class="text-2xl font-bold text-gray-900 mb-2"></p>
+          <p class="text-sm text-gray-600">Your registered email</p>
+        </div>
+      </div>
+    </main>
   </body>
   <script differ>
     // get logged user from the local storage
@@ -33,7 +115,7 @@
     document.getElementById("userEmail").textContent = user.email;
 
     // handle logout button
-    document.querySelector("button").addEventListener("click", () => {
+    document.getElementById("logoutBtn").addEventListener("click", () => {
       localStorage.removeItem("loggedUser");
       window.location = "index.html";
     });
