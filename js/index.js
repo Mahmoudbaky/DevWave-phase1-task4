@@ -123,6 +123,10 @@ const addUser = (inputField) => {
   if (!emailDublicate) {
     users.push(userObject);
     localStorage.setItem("users", JSON.stringify(users));
+    document.querySelector("#signupSuccess").classList.remove("hidden");
+    document.querySelector("#signupSuccess").classList.add("block");
+    document.querySelector("#signupSuccess").textContent =
+      "User created successfully!";
     resetForms(signUpForm);
   } else {
     errorFields.emailError.textContent = "email already exists";
